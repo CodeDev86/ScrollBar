@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link href="main.css" rel="stylesheet">
-    <script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
-    <script src="main.js" type="text/javascript"></script>
-</head>
-<body>
-    <div class="contentContainer"> 
-        <div class="scrollBar scrollBarRight">
-            <div class="scrollBar upArrow" onmousedown="moveUp()" onmouseup="cancelScrolling()"></div>
-            <div class="scrollBar downArrow" onmousedown="moveDown()" onmouseup="cancelScrolling()"></div>
+    <head>
+        <link href="main.css" rel="stylesheet">
+        <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+        <script src="bower_components/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="main.js" type="text/javascript"></script>
+        <script type="text/javascript">
+
+        </script>
+    </head>
+    <body>
+        <article style="text-align:center;">
+            <section style="display:inline-block; padding-right:50px;">
+                <header><h4>Bottom Scroll Bar</h4></header>
+                <p><label>Offset Top: </label><span id="bottomOffsetTop"></span></p>
+                <p><label>Offset Left: </label><span id="bottomOffsetLeft"></span></p>
+                <p><label>Posistion Top: </label><span id="bottomPosistionTop"></span></p>
+                <p><label>Posistion Left: </label><span id="bottomPosistionLeft"></span></p>
+            </section>
+            <section style="display:inline-block; padding-left:50px;">
+                <header><h4>Right Scroll Bar</h4></header>
+                <p><label>Offset Top: </label><span id="rightOffsetTop"></span></p>
+                <p><label>Offset Left: </label><span id="rightOffsetLeft"></span></p>
+                <p><label>Posistion Top: </label><span id="rightPosistionTop"></span></p>
+                <p><label>Posistion Left: </label><span id="rightPosistionLeft"></span></p>
+            </section>
+        </article>
+        <div class="contentContainer"> 
+            <div class="scrollBar scrollBarRight">
+                <div class="scrollBar upArrow" onmousedown="moveUp()" onmouseup="cancelScrolling()" onmouseout="cancelScrolling()"></div>
+                <div class="scrollBar rightScrollBlock"></div>
+                <div class="scrollBar downArrow" onmousedown="moveDown()" onmouseup="cancelScrolling()" onmouseout="cancelScrolling()"></div>
+            </div>
+            <div class="scrollBar scrollBarBottom" >
+                <div class="scrollBar leftArrow" onmousedown="moveLeft()" onmouseup="cancelScrolling()" onmouseout="cancelScrolling()"></div>
+                <div id="draggable5" class="scrollBar bottomScrollBlock"></div>
+                <div class="scrollBar rightArrow" onmousedown="moveRight()" onmouseup="cancelScrolling()" onmouseout="cancelScrolling()"></div>
+            </div>
+            <div  class="viewPort">
+                <div class="content"></div>
+            </div>
         </div>
-        <div class="scrollBar scrollBarBottom" >
-            <div class="scrollBar leftArrow" onmousedown="moveLeft()" onmouseup="cancelScrolling()"></div>
-            <div class="scrollBar rightArrow" onmousedown="moveRight()" onmouseup="cancelScrolling()"></div>
-        </div>
-        <div  class="viewPort">
-            <div class="content"></div>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
