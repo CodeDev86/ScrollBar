@@ -6,14 +6,16 @@ $().ready(function () {
 
                 var bottomScrollBarContainer = $(".scrollBar.scrollBarBottom");
                 var content = $(".content");
+                var viewPort = $(".viewPort");
 
+                var viewPortWidth = viewPort.width();
                 var contentWidth = content.width();
-                var bottomScrollBarContainerSize = bottomScrollBarContainer.width();
+                var bottomScrollBarContainerSize = bottomScrollBarContainer.width() - 25;
 
-                var contentRatio = 1 - (bottomScrollBarContainerSize/contentWidth);
+                var contentRatio = (contentWidth - viewPortWidth)/bottomScrollBarContainerSize;
 
                 var currentPosistion = content.css("left");
-                var positionChange = ui.position.left - lastBottomScrollBarPosition 
+                var positionChange = ui.position.left - lastBottomScrollBarPosition
                 lastBottomScrollBarPosition = ui.position.left;
 
                 content.css("left", "-=" + positionChange * contentRatio);
@@ -27,7 +29,7 @@ $().ready(function () {
                 $("#bottomPosistionTop").text(ui.position.top.toFixed(2));
                 $("#bottomPosistionLeft").text(ui.position.left.toFixed(2));
             }
-        }); 
+        });
     $(".scrollBar.rightScrollBlock").draggable(
         {
             containment: "parent",
@@ -35,15 +37,15 @@ $().ready(function () {
                 var rightScrollBarContainer = $(".scrollBar.scrollBarRight");
                 var content = $(".content");
                 var viewPort = $(".viewPort");
-                
+
                 var viewPortHeight = viewPort.height();
                 var contentHeight = content.height();
-                var rightScrollBarContainerSize = rightScrollBarContainer.height();
-                
-                var contentRatio = (rightScrollBarContainerSize/(contentHeight - viewPortHeight));
-                
+                var rightScrollBarContainerSize = rightScrollBarContainer.height() - 25;
+
+                var contentRatio = (contentHeight - viewPortHeight)/rightScrollBarContainerSize;
+
                 var currentPosistion = content.css("left");
-                var positionChange = ui.position.top - lastRightScrollBarPosition 
+                var positionChange = ui.position.top - lastRightScrollBarPosition
                 lastRightScrollBarPosition = ui.position.top;
 
                 content.css("top", "-=" + positionChange * contentRatio);
@@ -56,7 +58,14 @@ $().ready(function () {
                 $("#rightOffsetLeft").text(ui.offset.left.toFixed(2));
                 $("#rightPosistionTop").text(ui.position.top.toFixed(2));
                 $("#rightPosistionLeft").text(ui.position.left.toFixed(2));
-            }}); 
+            }});
+
+        var viewPort = $(".viewPort");
+        var rightScrollBar = $(".scrollBar.scrollBarRight");
+        var bottomScrollBar = $(".scrollBar.scrollBarBottom");
+
+        bottomScrollBar.css("width", viewPort.width() - 30 + "px");
+        rightScrollBar.css("height", viewPort.height() - 30 + "px");
 });
 
 var scrollingInterval;
